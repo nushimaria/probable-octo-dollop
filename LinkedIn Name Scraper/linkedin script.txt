@@ -1,0 +1,9 @@
+window['linkedinnames'] = '';
+var totalpages = document.querySelectorAll("li[data-test-pagination-page-btn]");
+totalpages = totalpages[totalpages.length-1].innerText;
+totalpages = parseInt(totalpages);
+var currentpage = 1;
+var timer = setInterval(function(){
+document.querySelectorAll("#main > div > div > div:nth-child(2) > ul > li > div > div > div.entity-result__content.entity-result__divider.pt3.pb3.t-12.t-black--light > div.mb1 > div.t-roman.t-sans > div > span > span > a").forEach(function(e){window['linkedinnames'] += e.innerText + ', ';});
+if(currentpage == totalpages){clearInterval(timer);console.log(window['linkedinnames'])}else{currentpage++;document.querySelector('[aria-label="Next"]').click()}
+},3000)
